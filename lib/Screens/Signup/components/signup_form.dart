@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/home.dart';
+import 'package:flutter_auth/Screens/home/home.dart';
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
@@ -23,7 +23,7 @@ class SignUpForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             onChanged: (email) {
-              emailAddress = email!;
+              emailAddress = email;
             },
             decoration: InputDecoration(
               hintText: "Your email",
@@ -60,9 +60,9 @@ class SignUpForm extends StatelessWidget {
                   email: emailAddress,
                   password: password,
                 );
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MyHome();
-                }));
+                // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                //   return MyHome();
+                // }));
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'weak-password') {
                   print('The password provided is too weak.');

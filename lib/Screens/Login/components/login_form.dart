@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../Signup/signup_screen.dart';
-import '../../home.dart';
+import '../../home/home.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -61,7 +61,7 @@ class LoginForm extends StatelessWidget {
                       .signInWithEmailAndPassword(
                           email: emailAddress, password: password);
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return MyHome();
+                    return HomePage();
                   }));
                 } on FirebaseAuthException catch (e) {
                   if (e.code == 'user-not-found') {
