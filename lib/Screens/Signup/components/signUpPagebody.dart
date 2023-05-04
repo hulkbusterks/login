@@ -9,7 +9,7 @@ class SignUpPageBody extends StatelessWidget {
   String emailAddress = '';
   String password = '';
   @override
-  Widget build(BuildContext context) {f
+  Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
