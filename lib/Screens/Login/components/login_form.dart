@@ -102,7 +102,6 @@ class LoginForm extends StatelessWidget {
                       isObscure: true,
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
-                      hintText: "6+ characters",
                       onChanged: (pass) {
                         password = pass;
                       }),

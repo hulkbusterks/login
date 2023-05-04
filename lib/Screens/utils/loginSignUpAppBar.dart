@@ -38,7 +38,8 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
                       return LoginScreen();
                     })));
                   }
-                },hoverColor: Colors.transparent,child: Text(isLogin==true?"Sign Up  ":"Sign In  ",style: const TextStyle(color: Color(0xff0a46fc), fontSize: 14)))
+                },hoverColor: Colors.transparent,child: Text(isLogin==true?"Sign Up  ":"Sign In  ",style: const TextStyle(color: Color(0xff0a46fc), fontSize: 14))),
+                SizedBox(width: 20,)
               ],
             )
           ],
