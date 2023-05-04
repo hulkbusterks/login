@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Login/login_screen.dart';
 
 class SideBarMenu extends StatelessWidget {
   const SideBarMenu({Key? key}) : super(key: key);
@@ -6,25 +7,28 @@ class SideBarMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
         child: ListView(
-      padding: EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 20),
       children: [
         ListTile(
-          contentPadding: EdgeInsets.symmetric(vertical: 20),
-          title: Center(child: const Text('SignIn/SignUp')),
+          contentPadding: const EdgeInsets.symmetric(vertical: 20),
+          title: const Center(child: Text('SignIn/SignUp')),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: ((context) {
+              return const LoginScreen();
+            })));
+          },
+        ),
+        ListTile(
+          contentPadding: const EdgeInsets.symmetric(vertical: 20),
+          title: const Center(child: Text('Settings')),
           onTap: () {
             Navigator.pop(context);
           },
         ),
         ListTile(
-          contentPadding: EdgeInsets.symmetric(vertical: 20),
-          title: Center(child: const Text('Settings')),
-          onTap: () {
-            Navigator.pop(context);
-          },
-        ),
-        ListTile(
-          contentPadding: EdgeInsets.symmetric(vertical: 20),
-          title: Center(child: const Text('About Our Team')),
+          contentPadding: const EdgeInsets.symmetric(vertical: 20),
+          title: const Center(child: Text('About Our Team')),
           onTap: () {
             Navigator.pop(context);
           },

@@ -141,7 +141,7 @@ class LoginForm extends StatelessWidget {
                       backgroundColor: Colors.white,
                       shadowColor: Colors.white),
                   child: const Text(
-                    "Next",
+                    "Login",
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
