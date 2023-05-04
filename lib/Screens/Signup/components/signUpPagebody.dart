@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_auth/Screens/utils/customField.dart';
 
 class SignUpPageBody extends StatelessWidget {
-  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String emailAddress = '';
   String password = '';
   @override
@@ -13,12 +13,12 @@ class SignUpPageBody extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: size.width * 0.35,
-          color: Colors.amber,
+          width: size.width * 0.5,
+          color: Color.fromARGB(255, 255, 255, 255),
         ),
         SingleChildScrollView(
           child: Container(
-            width: size.width * 0.65,
+            width: size.width * 0.5,
             child: Center(
               child: Container(
                 width: 410,
@@ -79,7 +79,6 @@ class SignUpPageBody extends StatelessWidget {
                           Container(width: 180,height: 1,color: const Color.fromARGB(255, 197, 197, 197),padding: const EdgeInsets.only(bottom: 5),)
                         
                         ]),
-                        const SizedBox(height: 20,),
                         Row(
                           children: [
                             CustomTextField(
