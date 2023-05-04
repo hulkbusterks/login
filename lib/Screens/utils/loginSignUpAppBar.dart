@@ -12,25 +12,27 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 10),
-              child: Text(
+              margin: const EdgeInsets.only(left: 10),
+              child: const Text(
                 "buyBuddy",
                 style: TextStyle(color: Colors.black, fontSize: 25),
               ),
             ),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  text: isLogin==true?"Don't have an account ? ":"Already a member ? ",
-                  style: TextStyle(color: Colors.black, fontSize: 14)),
-              TextSpan(
-                  text: isLogin==true?"Sign Up ? ":"Sign In ? ",
-                  style: TextStyle(color: Color(0xff0a46fc), fontSize: 14)),
-            ]))
+            Row(
+              children: [
+                RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: isLogin==true?"Don't have an account ? ":"Already a member ? ",
+                      style: const TextStyle(color: Colors.black, fontSize: 14)),
+                ])),
+                InkWell(onTap: (){},hoverColor: Colors.transparent,child: Text(isLogin==true?"Sign Up ? ":"Sign In ? ",style: const TextStyle(color: Color(0xff0a46fc), fontSize: 14)))
+              ],
+            )
           ],
         ));
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
