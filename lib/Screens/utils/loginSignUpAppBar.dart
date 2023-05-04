@@ -26,7 +26,7 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
                       text: isLogin==true?"Don't have an account ? ":"Already a member ? ",
                       style: const TextStyle(color: Colors.black, fontSize: 14)),
                 ])),
-                InkWell(onTap: (){},hoverColor: Colors.transparent,child: Text(isLogin==true?"Sign Up ? ":"Sign In ? ",style: const TextStyle(color: Color(0xff0a46fc), fontSize: 14)))
+                InkWell(onTap: (){},hoverColor: Colors.transparent,child: Text(isLogin==true?"Sign Up  ":"Sign In  ",style: const TextStyle(color: Color(0xff0a46fc), fontSize: 14)))
               ],
             )
           ],

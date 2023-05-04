@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'appbar.dart';
 import '/Screens/home/home.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
 Color textFilledColor = const Color(0xfff1f1f1);

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/responsive.dart';
 
-import '../../components/background.dart';
 import 'components/login_form.dart';
 import 'components/login_screen_top_image.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
@@ -53,12 +52,12 @@ class MobileLoginScreen extends StatelessWidget {
         const LoginScreenTopImage(),
         Row(
           children: [
-            Spacer(),
+            const Spacer(),
             Expanded(
               flex: 8,
               child: LoginForm(),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ],
