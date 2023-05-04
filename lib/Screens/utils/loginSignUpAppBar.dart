@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
-  LoginSignUpAppBar({Key? key, required this.scaffoldKey}) : super(key: key);
+  LoginSignUpAppBar({Key? key, required this.scaffoldKey,required this.isLogin}) : super(key: key);
+  bool isLogin;
   final scaffoldKey;
   @override
   Widget build(BuildContext context) {
@@ -20,10 +21,10 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
             RichText(
                 text: TextSpan(children: [
               TextSpan(
-                  text: "Already a member?",
+                  text: isLogin==true?"Don't have an account ? ":"Already a member ? ",
                   style: TextStyle(color: Colors.black, fontSize: 14)),
               TextSpan(
-                  text: " Sign In  ",
+                  text: isLogin==true?"Sign Up ? ":"Sign In ? ",
                   style: TextStyle(color: Color(0xff0a46fc), fontSize: 14)),
             ]))
           ],

@@ -92,7 +92,7 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: LoginSignUpAppBar(scaffoldKey: _scaffoldKey),
+      appBar: LoginSignUpAppBar(scaffoldKey: _scaffoldKey,isLogin: false),
       body: Row(
         children: [
           Container(
