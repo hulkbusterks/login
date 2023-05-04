@@ -1,9 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import '../../../components/already_have_an_account_acheck.dart';
-import '../../../constants.dart';
-import '../../Signup/signup_screen.dart';
 import '../../home/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_auth/Screens/utils/customField.dart';
@@ -30,7 +26,7 @@ class LoginForm extends StatelessWidget {
                 height: 140,
                 child: Column(children: [
                   Text(
-                    "Sign Up to buyBuddy",
+                    "Sign In to buyBuddy",
                     style: GoogleFonts.getFont("Ramabhadra",
                         fontSize: 24, fontWeight: FontWeight.w700),
                   ),
@@ -57,7 +53,7 @@ class LoginForm extends StatelessWidget {
                             "https://castironsteak.com/wp-content/uploads/2016/01/google-square.jpg",
                           ),
                           const Text(
-                            "Sign up with Google",
+                            "Sign In with Google",
                             style: TextStyle(
                                 color: Color(0xffffffff),
                                 fontWeight: FontWeight.bold,

@@ -74,12 +74,12 @@ class SignUpPageBody extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                          Container(width: 180,height: 1,color: Color.fromARGB(255, 197, 197, 197),padding: EdgeInsets.only(bottom: 5),),
-                          Text("Or",style: TextStyle(color: Color.fromARGB(255, 142, 142, 142)),),
-                          Container(width: 180,height: 1,color: Color.fromARGB(255, 197, 197, 197),padding: EdgeInsets.only(bottom: 5),)
+                          Container(width: 180,height: 1,color: const Color.fromARGB(255, 197, 197, 197),padding: const EdgeInsets.only(bottom: 5),),
+                          const Text("Or",style: TextStyle(color: Color.fromARGB(255, 142, 142, 142)),),
+                          Container(width: 180,height: 1,color: const Color.fromARGB(255, 197, 197, 197),padding: const EdgeInsets.only(bottom: 5),)
                         
                         ]),
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
                         Row(
                           children: [
                             CustomTextField(
@@ -173,7 +173,7 @@ class SignUpPageBody extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 100,)
+                        const SizedBox(height: 100,)
                         
                       ],
                     ),
