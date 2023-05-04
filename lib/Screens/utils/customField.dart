@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Signup/components/signUpPagebody.dart';
+import 'package:flutter_auth/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 class CustomTextField extends StatelessWidget {
   double width;
   String FieldName;
@@ -29,7 +29,8 @@ class CustomTextField extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           FieldName,
-          style: GoogleFonts.getFont("Ramabhadra",fontSize: 15,fontWeight: FontWeight.bold),
+          style: GoogleFonts.getFont("Ramabhadra",
+              fontSize: 15, fontWeight: FontWeight.bold),
         ),
         SizedBox(
           height: 40,
@@ -41,26 +42,27 @@ class CustomTextField extends StatelessWidget {
               onChanged: onChanged,
               cursorWidth: 1,
               decoration: InputDecoration(
-                contentPadding: const EdgeInsets.only(bottom: 7, left: 10),
-                filled: true,
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide(
-                    color: textFilledColor,
-                    width: 2.0,
+                  contentPadding: const EdgeInsets.only(bottom: 7, left: 10),
+                  filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      color: textFilledColor,
+                      width: 2.0,
+                    ),
                   ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: const BorderSide(
-                    color: Color(0xff0033ff),
-                    width: 2.0,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: Color(0xff0033ff),
+                      width: 2.0,
+                    ),
                   ),
-                ),
-                fillColor: textFilledColor,
-                hintText: hintText,
-                hintStyle: TextStyle(fontSize: 14,color: Color.fromARGB(255, 195, 195, 195))
-              )),
+                  fillColor: textFilledColor,
+                  hintText: hintText,
+                  hintStyle: TextStyle(
+                      fontSize: 14,
+                      color: Color.fromARGB(255, 195, 195, 195)))),
         )
       ]),
     );
