@@ -24,10 +24,7 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: 450,
-                      child: LoginForm(),
-                    ),
+                    LoginForm()
                   ],
                 ),
               ),
