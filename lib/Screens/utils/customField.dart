@@ -10,12 +10,14 @@ class CustomTextField extends StatelessWidget {
   TextInputAction textInputAction;
   Function(String)? onChanged;
   String? hintText;
+  TextEditingController controller;
   CustomTextField(
       {Key? key,
       required this.width,
       required this.FieldName,
       required this.isObscure,
       required this.keyboardType,
+      required this.controller,
       required this.textInputAction,
       this.onChanged,
       this.hintText})
@@ -35,6 +37,7 @@ class CustomTextField extends StatelessWidget {
         SizedBox(
           height: 40,
           child: TextFormField(
+            controller: controller,
               obscureText: isObscure,
               textInputAction: textInputAction,
               keyboardType: keyboardType,

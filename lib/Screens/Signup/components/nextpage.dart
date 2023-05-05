@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '/Screens/home/home.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
+
 Color textFilledColor = const Color(0xfff1f1f1);
 
 class FieldStyle extends StatelessWidget {
@@ -50,10 +52,14 @@ class FieldStyle extends StatelessWidget {
 }
 
 class NextPageOfSignUpPage extends StatefulWidget {
+  // fetching user credentials from sign up body
+   String firstName;
+  String lastName;
+  String confirmPassword;
   String emailAddress;
   String password;
   NextPageOfSignUpPage(
-      {Key? key, required this.emailAddress, required this.password})
+      {Key? key, required this.firstName,required this.lastName,required this.emailAddress, required this.password,required this.confirmPassword})
       : super(key: key);
   @override
   State<NextPageOfSignUpPage> createState() => _NextPageOfSignUpPageState();
@@ -90,7 +96,7 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: LoginSignUpAppBar(scaffoldKey: _scaffoldKey,isLogin: false),
+      appBar: LoginSignUpAppBar(scaffoldKey: _scaffoldKey, isLogin: false),
       body: Row(
         children: [
           Container(
@@ -202,6 +208,12 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                   email: widget.emailAddress,
                                   password: widget.password,
                                 );
+                                DatabaseReference userRef = FirebaseDatabase
+                                    .instance
+                                    .ref()
+                                    .child('users');
+                                String uid = credential.user!.uid;
+                                userRef.child(uid).set({});
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return HomePage();
