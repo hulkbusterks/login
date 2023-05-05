@@ -8,7 +8,8 @@ Color textFilledColor = const Color(0xfff1f1f1);
 
 class FieldStyle extends StatelessWidget {
   String fieldName;
-  FieldStyle({Key? key, required this.fieldName}) : super(key: key);
+  TextEditingController controller;
+  FieldStyle({Key? key, required this.fieldName,required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class FieldStyle extends StatelessWidget {
         SizedBox(
           width: 410,
           child: TextField(
+            controller: controller,
               obscureText: false,
               keyboardType: TextInputType.name,
               cursorColor: Colors.black,
@@ -69,14 +71,16 @@ class NextPageOfSignUpPage extends StatefulWidget {
 class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
   String _selectedType = '';
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-
+  var instituteNameController= TextEditingController();
+  var instituteLocationController = TextEditingController();
+  String instituteType="";
   Widget _buildSchoolDetails() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FieldStyle(fieldName: "School Name"),
+        FieldStyle(fieldName: "School Name",controller: instituteNameController,),
         const SizedBox(height: 20),
-        FieldStyle(fieldName: "School Address"),
+        FieldStyle(fieldName: "School Address",controller: instituteLocationController,),
       ],
     );
   }
@@ -85,9 +89,9 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        FieldStyle(fieldName: "College Name"),
+        FieldStyle(fieldName: "College Name",controller: instituteNameController),
         const SizedBox(height: 20),
-        FieldStyle(fieldName: "College Address"),
+        FieldStyle(fieldName: "College Address",controller: instituteLocationController),
       ],
     );
   }
