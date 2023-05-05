@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import '/Screens/home/home.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 Color textFilledColor = const Color(0xfff1f1f1);
 
@@ -69,11 +70,10 @@ class NextPageOfSignUpPage extends StatefulWidget {
 }
 
 class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
-  String _selectedType = '';
+  String instituteType = '';
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   var instituteNameController= TextEditingController();
   var instituteLocationController = TextEditingController();
-  String instituteType="";
   Widget _buildSchoolDetails() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -130,10 +130,10 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                         children: [
                           Radio(
                             value: 'school',
-                            groupValue: _selectedType,
+                            groupValue: instituteType,
                             onChanged: (value) {
                               setState(() {
-                                _selectedType = value as String;
+                                instituteType = value as String;
                               });
                             },
                           ),
@@ -151,10 +151,10 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                         children: [
                           Radio(
                             value: 'college',
-                            groupValue: _selectedType,
+                            groupValue: instituteType,
                             onChanged: (value) {
                               setState(() {
-                                _selectedType = value as String;
+                                instituteType = value as String;
                               });
                             },
                           ),
@@ -167,9 +167,9 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                       ),
                     ]),
                     const SizedBox(height: 20),
-                    _selectedType == 'school'
+                    instituteType == 'school'
                         ? _buildSchoolDetails()
-                        : _selectedType == 'college'
+                        : instituteType == 'college'
                             ? _buildCollegeDetails()
                             : const SizedBox(),
                     const SizedBox(
@@ -206,6 +206,16 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                           height: 40,
                           child: ElevatedButton(
                             onPressed: () async {
+                              var instituteName = instituteNameController.text.trim();
+                              var instituteLocation = instituteLocationController.text.trim();
+                              if (instituteType.isEmpty ||instituteName.isEmpty ||
+                                  instituteLocation.isEmpty
+                               ) {
+                                // show error toast
+                                Fluttertoast.showToast(
+                                    msg: 'Please fill all fields');
+                                return;
+                              }
                               try {
                                 UserCredential credential = await FirebaseAuth
                                     .instance

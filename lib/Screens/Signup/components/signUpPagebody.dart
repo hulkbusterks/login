@@ -208,7 +208,7 @@ class SignUpPageBody extends StatelessWidget {
 
                               ProgressDialog progressDialog = ProgressDialog(
                                 context,
-                                title: const Text('Signing Up'),
+                                title: const Text('Now Add few more details'),
                                 message: const Text('Please wait'),
                               );
 
