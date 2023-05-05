@@ -228,7 +228,17 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                     .ref()
                                     .child('users');
                                 String uid = credential.user!.uid;
-                                userRef.child(uid).set({});
+                                await userRef.child(uid).set({
+                                  'firstName':widget.firstName,
+                                  'lastName':widget.lastName,
+                                  'email':widget.emailAddress,
+                                  'mobileNumber':int.parse(widget.mobileNumber),
+                                  'password':widget.password,
+                                  'confirmPassword':widget.confirmPassword,
+                                  'instituteType':instituteType,
+                                  'instituteName':instituteName,
+                                  'instituteLocation':instituteLocation,
+                                });
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
                                   return HomePage();
