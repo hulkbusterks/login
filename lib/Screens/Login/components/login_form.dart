@@ -12,8 +12,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String emailAddress = '';
-    String password = '';
+      var emailController = TextEditingController();
+  var passwordController = TextEditingController();
     return Container(
       width: 410,
       child: Form(
@@ -87,24 +87,21 @@ class LoginForm extends StatelessWidget {
               Column(
                 children: <Widget>[
                   CustomTextField(
+                    controller: emailController,
                     width: 410,
                     FieldName: "Email",
                     isObscure: false,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
-                    onChanged: (email) {
-                      emailAddress = email;
-                    },
                   ),
                   CustomTextField(
+                    controller: passwordController,
                       width: 410,
                       FieldName: "Password",
                       isObscure: true,
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.done,
-                      onChanged: (pass) {
-                        password = pass;
-                      }),
+                     ),
                 ],
               ),
               const SizedBox(
@@ -118,7 +115,7 @@ class LoginForm extends StatelessWidget {
                     try {
                       final credential = await FirebaseAuth.instance
                           .signInWithEmailAndPassword(
-                              email: emailAddress, password: password);
+                              email: emailController.text.trim(), password: passwordController.text.trim());
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return HomePage();
