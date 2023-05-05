@@ -21,20 +21,11 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -53,12 +44,39 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAfVgyDHvNTUxt5__EBKsCbqozDkZeVI-I',
-    appId: '1:829605890857:web:ed207a3f1eef89043e0538',
-    messagingSenderId: '829605890857',
-    projectId: 'olx-1-d68b6',
-    authDomain: 'olx-1-d68b6.firebaseapp.com',
-    storageBucket: 'olx-1-d68b6.appspot.com',
-    measurementId: 'G-EYXDEW1YNT',
+    apiKey: 'AIzaSyDO0cGyTLZdulZjCvxMLchFuvl0DnUQ_-c',
+    appId: '1:979319833074:web:37ebda44fded14f06aab6b',
+    messagingSenderId: '979319833074',
+    projectId: 'studenthelperolx',
+    authDomain: 'studenthelperolx.firebaseapp.com',
+    storageBucket: 'studenthelperolx.appspot.com',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyBKj3tZyD2hWheahG4iiP4mAiOSBmzb0cM',
+    appId: '1:979319833074:android:5954303df95721826aab6b',
+    messagingSenderId: '979319833074',
+    projectId: 'studenthelperolx',
+    storageBucket: 'studenthelperolx.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCJbi2yCYEiyVJx4gTtSrXfAtplq0oH8UM',
+    appId: '1:979319833074:ios:52c14615401709546aab6b',
+    messagingSenderId: '979319833074',
+    projectId: 'studenthelperolx',
+    storageBucket: 'studenthelperolx.appspot.com',
+    iosClientId: '979319833074-8gf76j4qf8ih8o7ofbkaptqj0qhm0ocu.apps.googleusercontent.com',
+    iosBundleId: 'com.example.flutterAuth',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCJbi2yCYEiyVJx4gTtSrXfAtplq0oH8UM',
+    appId: '1:979319833074:ios:52c14615401709546aab6b',
+    messagingSenderId: '979319833074',
+    projectId: 'studenthelperolx',
+    storageBucket: 'studenthelperolx.appspot.com',
+    iosClientId: '979319833074-8gf76j4qf8ih8o7ofbkaptqj0qhm0ocu.apps.googleusercontent.com',
+    iosBundleId: 'com.example.flutterAuth',
   );
 }
