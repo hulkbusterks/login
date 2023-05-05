@@ -232,7 +232,7 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                   'firstName':widget.firstName,
                                   'lastName':widget.lastName,
                                   'email':widget.emailAddress,
-                                  'mobileNumber':int.parse(widget.mobileNumber),
+                                  'mobileNumber':widget.mobileNumber,
                                   'password':widget.password,
                                   'confirmPassword':widget.confirmPassword,
                                   'instituteType':instituteType,
