@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
   LoginSignUpAppBar({Key? key, required this.scaffoldKey,required this.isLogin}) : super(key: key);
   bool isLogin;
@@ -15,9 +15,9 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
           children: [
             Container(
               margin: const EdgeInsets.only(left: 10),
-              child: const Text(
+              child: Text(
                 "buyBuddy",
-                style: TextStyle(color: Colors.black, fontSize: 25),
+                style: GoogleFonts.getFont('Ramabhadra',fontSize: 25,color: Colors.black),
               ),
             ),
             Row(
@@ -31,7 +31,7 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
                 InkWell(onTap: (){
                   if(isLogin==true){
                     Navigator.push(context, MaterialPageRoute(builder: ((context) {
-                      return SignUpScreen();
+                      return const SignUpScreen();
                     })));
                   }else{
                     Navigator.push(context, MaterialPageRoute(builder: ((context) {
@@ -39,7 +39,7 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
                     })));
                   }
                 },hoverColor: Colors.transparent,child: Text(isLogin==true?"Sign Up  ":"Sign In  ",style: const TextStyle(color: Color(0xff0a46fc), fontSize: 14))),
-                SizedBox(width: 20,)
+                const SizedBox(width: 20,)
               ],
             )
           ],
