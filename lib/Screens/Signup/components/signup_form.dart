@@ -60,7 +60,12 @@ class SignUpForm extends StatelessWidget {
                   email: emailAddress,
                   password: password,
                 );
-                Database
+                //integrating realtime Database of firebase
+                DatabaseReference userRef=FirebaseDatabase.instance.ref().child('users');
+                String uid= credential.user!.uid;
+                userRef.child(uid).set({
+
+                });
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return HomePage();
                 }));
