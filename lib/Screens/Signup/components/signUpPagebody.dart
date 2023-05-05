@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'nextpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_auth/Screens/utils/customField.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:ndialog/ndialog.dart';
 
 class SignUpPageBody extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -138,22 +140,22 @@ class SignUpPageBody extends StatelessWidget {
                               textInputAction: TextInputAction.next,
                             ),
                             CustomTextField(
-                                controller: passwordController,
-                                width: 410,
-                                FieldName: "Password",
-                                isObscure: true,
-                                keyboardType: TextInputType.visiblePassword,
-                                textInputAction: TextInputAction.done,
-                                hintText: "6+ characters",
-                                ),
+                              controller: passwordController,
+                              width: 410,
+                              FieldName: "Password",
+                              isObscure: true,
+                              keyboardType: TextInputType.visiblePassword,
+                              textInputAction: TextInputAction.done,
+                              hintText: "6+ characters",
+                            ),
                             CustomTextField(
-                                width: 410,
-                                controller: confirmPasswordController,
-                                FieldName: "Confirm Password",
-                                isObscure: true,
-                                keyboardType: TextInputType.visiblePassword,
-                                textInputAction: TextInputAction.done,
-                                ),
+                              width: 410,
+                              controller: confirmPasswordController,
+                              FieldName: "Confirm Password",
+                              isObscure: true,
+                              keyboardType: TextInputType.visiblePassword,
+                              textInputAction: TextInputAction.done,
+                            ),
                           ],
                         ),
                         const SizedBox(
@@ -172,11 +174,55 @@ class SignUpPageBody extends StatelessWidget {
                               var password = passwordController.text.trim();
                               var confirmPass =
                                   confirmPasswordController.text.trim();
+                              if (firstName.isEmpty ||
+                                  lastName.isEmpty ||
+                                  mobileNumber.isEmpty ||
+                                  email.isEmpty ||
+                                  password.isEmpty ||
+                                  confirmPass.isEmpty) {
+                                // show error toast
+
+                                Fluttertoast.showToast(
+                                    msg: 'Please fill all fields');
+                                return;
+                              }
+
+                              if (password.length < 6) {
+                                // show error toast
+                                Fluttertoast.showToast(
+                                    msg:
+                                        'Weak Password, at least 6 characters are required');
+
+                                return;
+                              }
+
+                              if (password != confirmPass) {
+                                // show error toast
+                                Fluttertoast.showToast(
+                                    msg: 'Passwords do not match');
+
+                                return;
+                              }
+
+                              // request to firebase auth
+
+                              ProgressDialog progressDialog = ProgressDialog(
+                                context,
+                                title: const Text('Signing Up'),
+                                message: const Text('Please wait'),
+                              );
+
+                              progressDialog.show();
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => NextPageOfSignUpPage(
-                                      emailAddress: email,
-                                      password: password,firstName:firstName,lastName: lastName,confirmPassword: confirmPass,),
+                                    emailAddress: email,
+                                    password: password,
+                                    firstName: firstName,
+                                    lastName: lastName,
+                                    mobileNumber: mobileNumber,
+                                    confirmPassword: confirmPass,
+                                  ),
                                 ),
                               );
                             },

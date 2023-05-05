@@ -29,6 +29,8 @@ dependencies:
   firebase_core_platform_interface: ^4.6.0
   google_fonts: ^4.0.4
   firebase_database: ^10.1.2
+  fluttertoast: ^8.2.1
+  ndialog: ^4.3.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

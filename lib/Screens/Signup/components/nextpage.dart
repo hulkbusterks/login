@@ -55,11 +55,12 @@ class NextPageOfSignUpPage extends StatefulWidget {
   // fetching user credentials from sign up body
    String firstName;
   String lastName;
+  String mobileNumber;
   String confirmPassword;
   String emailAddress;
   String password;
   NextPageOfSignUpPage(
-      {Key? key, required this.firstName,required this.lastName,required this.emailAddress, required this.password,required this.confirmPassword})
+      {Key? key, required this.firstName,required this.lastName,required this.mobileNumber,required this.emailAddress, required this.password,required this.confirmPassword})
       : super(key: key);
   @override
   State<NextPageOfSignUpPage> createState() => _NextPageOfSignUpPageState();
