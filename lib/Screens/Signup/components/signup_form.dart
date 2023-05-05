@@ -5,7 +5,7 @@ import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../Login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
     Key? key,
@@ -60,7 +60,7 @@ class SignUpForm extends StatelessWidget {
                   email: emailAddress,
                   password: password,
                 );
-                
+                Database
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return HomePage();
                 }));
