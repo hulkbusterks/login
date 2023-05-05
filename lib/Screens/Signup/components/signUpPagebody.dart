@@ -6,6 +6,12 @@ import 'package:flutter_auth/Screens/utils/customField.dart';
 class SignUpPageBody extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String emailAddress = '';
+  var firstNameController = TextEditingController();
+  var lastNameController = TextEditingController();
+  var mobileNumberController = TextEditingController();
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
   String password = '';
   @override
   Widget build(BuildContext context) {
@@ -14,13 +20,13 @@ class SignUpPageBody extends StatelessWidget {
       children: [
         Container(
           width: size.width * 0.5,
-          color: Color.fromARGB(255, 255, 255, 255),
+          color: const Color.fromARGB(255, 255, 255, 255),
         ),
         SingleChildScrollView(
-          child: Container(
+          child: SizedBox(
             width: size.width * 0.5,
             child: Center(
-              child: Container(
+              child: SizedBox(
                 width: 410,
                 child: Form(
                   key: _formKey,
@@ -28,12 +34,13 @@ class SignUpPageBody extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 140,
                           child: Column(children: [
                             Text(
                               "Sign Up to buyBuddy",
-                              style: GoogleFonts.getFont("Ramabhadra",fontSize: 24,fontWeight: FontWeight.w700),
+                              style: GoogleFonts.getFont("Ramabhadra",
+                                  fontSize: 24, fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(
                               height: 15,
@@ -52,7 +59,8 @@ class SignUpPageBody extends StatelessWidget {
                                         const Color.fromRGBO(26, 115, 232, 1),
                                     shadowColor: Colors.white),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
                                   children: [
                                     Image.network(
                                       "https://castironsteak.com/wp-content/uploads/2016/01/google-square.jpg",
@@ -70,18 +78,32 @@ class SignUpPageBody extends StatelessWidget {
                             )
                           ]),
                         ),
-                        // Or element 
+                        // Or element
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                          Container(width: 180,height: 1,color: const Color.fromARGB(255, 197, 197, 197),padding: const EdgeInsets.only(bottom: 5),),
-                          const Text("Or",style: TextStyle(color: Color.fromARGB(255, 142, 142, 142)),),
-                          Container(width: 180,height: 1,color: const Color.fromARGB(255, 197, 197, 197),padding: const EdgeInsets.only(bottom: 5),)
-                        
-                        ]),
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 180,
+                                height: 1,
+                                color: const Color.fromARGB(255, 197, 197, 197),
+                                padding: const EdgeInsets.only(bottom: 5),
+                              ),
+                              const Text(
+                                "Or",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 142, 142, 142)),
+                              ),
+                              Container(
+                                width: 180,
+                                height: 1,
+                                color: const Color.fromARGB(255, 197, 197, 197),
+                                padding: const EdgeInsets.only(bottom: 5),
+                              )
+                            ]),
                         Row(
                           children: [
                             CustomTextField(
+                                controller: firstNameController,
                                 width: 200,
                                 FieldName: "First Name",
                                 isObscure: false,
@@ -91,6 +113,7 @@ class SignUpPageBody extends StatelessWidget {
                               width: 10,
                             ),
                             CustomTextField(
+                                controller: lastNameController,
                                 width: 200,
                                 FieldName: "Last Name",
                                 isObscure: false,
@@ -98,29 +121,18 @@ class SignUpPageBody extends StatelessWidget {
                                 textInputAction: TextInputAction.next),
                           ],
                         ),
-                        Row(
-                          children: [
-                            CustomTextField(
-                                width: 200,
-                                FieldName: "Country",
-                                isObscure: false,
-                                keyboardType: TextInputType.name,
-                                textInputAction: TextInputAction.next),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            CustomTextField(
-                                width: 200,
-                                FieldName: "Mobile Number",
-                                isObscure: false,
-                                keyboardType: TextInputType.number,
-                                textInputAction: TextInputAction.next),
-                          ],
-                        ),
+                        CustomTextField(
+                            controller: mobileNumberController,
+                            width: 410,
+                            FieldName: "Mobile Number",
+                            isObscure: false,
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next),
                         Column(
                           // crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             CustomTextField(
+                              controller: emailController,
                               width: 410,
                               FieldName: "Email",
                               isObscure: false,
@@ -131,12 +143,23 @@ class SignUpPageBody extends StatelessWidget {
                               },
                             ),
                             CustomTextField(
+                                controller: passwordController,
                                 width: 410,
                                 FieldName: "Password",
                                 isObscure: true,
                                 keyboardType: TextInputType.visiblePassword,
                                 textInputAction: TextInputAction.done,
                                 hintText: "6+ characters",
+                                onChanged: (pass) {
+                                  password = pass;
+                                }),
+                            CustomTextField(
+                                width: 410,
+                                controller: confirmPasswordController,
+                                FieldName: "Confirm Password",
+                                isObscure: true,
+                                keyboardType: TextInputType.visiblePassword,
+                                textInputAction: TextInputAction.done,
                                 onChanged: (pass) {
                                   password = pass;
                                 }),
@@ -150,9 +173,19 @@ class SignUpPageBody extends StatelessWidget {
                           height: 40,
                           child: ElevatedButton(
                             onPressed: () {
+                              var fullName = firstNameController.text.trim();
+                              var lastName = lastNameController.text.trim();
+                              var mobileNumber =
+                                  mobileNumberController.text.trim();
+                              var email = emailController.text.trim();
+                              var password = passwordController.text.trim();
+                              var confirmPass =
+                                  confirmPasswordController.text.trim();
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => NextPageOfSignUpPage(emailAddress: emailAddress,password: password),
+                                  builder: (context) => NextPageOfSignUpPage(
+                                      emailAddress: emailAddress,
+                                      password: password),
                                 ),
                               );
                             },
@@ -172,8 +205,9 @@ class SignUpPageBody extends StatelessWidget {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 100,)
-                        
+                        const SizedBox(
+                          height: 100,
+                        )
                       ],
                     ),
                   ),
