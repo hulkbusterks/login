@@ -5,14 +5,12 @@ import 'package:flutter_auth/Screens/utils/customField.dart';
 
 class SignUpPageBody extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  String emailAddress = '';
   var firstNameController = TextEditingController();
   var lastNameController = TextEditingController();
   var mobileNumberController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
-  String password = '';
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -138,9 +136,6 @@ class SignUpPageBody extends StatelessWidget {
                               isObscure: false,
                               keyboardType: TextInputType.emailAddress,
                               textInputAction: TextInputAction.next,
-                              onChanged: (email) {
-                                emailAddress = email;
-                              },
                             ),
                             CustomTextField(
                                 controller: passwordController,
@@ -150,9 +145,7 @@ class SignUpPageBody extends StatelessWidget {
                                 keyboardType: TextInputType.visiblePassword,
                                 textInputAction: TextInputAction.done,
                                 hintText: "6+ characters",
-                                onChanged: (pass) {
-                                  password = pass;
-                                }),
+                                ),
                             CustomTextField(
                                 width: 410,
                                 controller: confirmPasswordController,
@@ -160,9 +153,7 @@ class SignUpPageBody extends StatelessWidget {
                                 isObscure: true,
                                 keyboardType: TextInputType.visiblePassword,
                                 textInputAction: TextInputAction.done,
-                                onChanged: (pass) {
-                                  password = pass;
-                                }),
+                                ),
                           ],
                         ),
                         const SizedBox(
@@ -173,7 +164,7 @@ class SignUpPageBody extends StatelessWidget {
                           height: 40,
                           child: ElevatedButton(
                             onPressed: () {
-                              var fullName = firstNameController.text.trim();
+                              var firstName = firstNameController.text.trim();
                               var lastName = lastNameController.text.trim();
                               var mobileNumber =
                                   mobileNumberController.text.trim();
@@ -184,8 +175,8 @@ class SignUpPageBody extends StatelessWidget {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
                                   builder: (context) => NextPageOfSignUpPage(
-                                      emailAddress: emailAddress,
-                                      password: password),
+                                      emailAddress: email,
+                                      password: password,firstName:firstName,lastName: lastName,confirmPassword: confirmPass,),
                                 ),
                               );
                             },
