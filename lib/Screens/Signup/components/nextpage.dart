@@ -59,11 +59,10 @@ class NextPageOfSignUpPage extends StatefulWidget {
    String firstName;
   String lastName;
   String mobileNumber;
-  String confirmPassword;
   String emailAddress;
   String password;
   NextPageOfSignUpPage(
-      {Key? key, required this.firstName,required this.lastName,required this.mobileNumber,required this.emailAddress, required this.password,required this.confirmPassword})
+      {Key? key, required this.firstName,required this.lastName,required this.mobileNumber,required this.emailAddress, required this.password})
       : super(key: key);
   @override
   State<NextPageOfSignUpPage> createState() => _NextPageOfSignUpPageState();
@@ -234,7 +233,6 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                   'email':widget.emailAddress,
                                   'mobileNumber':widget.mobileNumber,
                                   'password':widget.password,
-                                  'confirmPassword':widget.confirmPassword,
                                   'instituteType':instituteType,
                                   'instituteName':instituteName,
                                   'instituteLocation':instituteLocation,

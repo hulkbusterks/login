@@ -221,7 +221,6 @@ class SignUpPageBody extends StatelessWidget {
                                     firstName: firstName,
                                     lastName: lastName,
                                     mobileNumber: mobileNumber,
-                                    confirmPassword: confirmPass,
                                   ),
                                 ),
                               );
