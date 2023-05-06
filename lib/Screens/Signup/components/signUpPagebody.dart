@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_auth/Screens/utils/customField.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ndialog/ndialog.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_auth/Screens/utils/loginSignUpComponents.dart';
 class SignUpPageBody extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var firstNameController = TextEditingController();
@@ -45,39 +45,7 @@ class SignUpPageBody extends StatelessWidget {
                             const SizedBox(
                               height: 15,
                             ),
-                            SizedBox(
-                              width: 240,
-                              height: 40,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5),
-                                    ),
-                                    padding: const EdgeInsets.all(8),
-                                    backgroundColor:
-                                        const Color.fromRGBO(26, 115, 232, 1),
-                                    shadowColor: Colors.white),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    SvgPicture.network("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"),
-                                    const SizedBox(
-                                      width: 200,
-                                      height: 40,
-                                      child: Text(
-                                        "Sign up with Google",
-                                        style: TextStyle(
-                                            color: Color(0xffffffff),
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 14),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
+                            GoogleConnect(isLogin: false)
                           ]),
                         ),
                         // Or element

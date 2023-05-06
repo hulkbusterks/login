@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../home/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_auth/Screens/utils/customField.dart';
+import 'package:flutter_auth/Screens/utils/loginSignUpComponents.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({
@@ -33,37 +34,8 @@ class LoginForm extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  SizedBox(
-                    width: 240,
-                    height: 40,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          padding: const EdgeInsets.all(8),
-                          backgroundColor:
-                              const Color.fromRGBO(26, 115, 232, 1),
-                          shadowColor: Colors.white),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Image.network(
-                            "https://castironsteak.com/wp-content/uploads/2016/01/google-square.jpg",
-                          ),
-                          const Text(
-                            "Sign In with Google",
-                            style: TextStyle(
-                                color: Color(0xffffffff),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ]),
+                            GoogleConnect(isLogin: true)
+                  ]),
               ),
               // Or element
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
