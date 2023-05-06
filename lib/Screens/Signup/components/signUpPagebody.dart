@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_auth/Screens/utils/customField.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:ndialog/ndialog.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 class SignUpPageBody extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var firstNameController = TextEditingController();
@@ -62,15 +62,17 @@ class SignUpPageBody extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceAround,
                                   children: [
-                                    Image.network(
-                                      "https://castironsteak.com/wp-content/uploads/2016/01/google-square.jpg",
-                                    ),
-                                    const Text(
-                                      "Sign up with Google",
-                                      style: TextStyle(
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14),
+                                    SvgPicture.network("https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg"),
+                                    const SizedBox(
+                                      width: 200,
+                                      height: 40,
+                                      child: Text(
+                                        "Sign up with Google",
+                                        style: TextStyle(
+                                            color: Color(0xffffffff),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14),
+                                      ),
                                     ),
                                   ],
                                 ),
