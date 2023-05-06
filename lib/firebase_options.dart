@@ -45,6 +45,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDO0cGyTLZdulZjCvxMLchFuvl0DnUQ_-c',
+    databaseURL: 'https://studenthelperolx-default-rtdb.asia-southeast1.firebasedatabase.app',
     appId: '1:979319833074:web:37ebda44fded14f06aab6b',
     messagingSenderId: '979319833074',
     projectId: 'studenthelperolx',
@@ -54,6 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBKj3tZyD2hWheahG4iiP4mAiOSBmzb0cM',
+    databaseURL: 'https://studenthelperolx-default-rtdb.asia-southeast1.firebasedatabase.app',
     appId: '1:979319833074:android:5954303df95721826aab6b',
     messagingSenderId: '979319833074',
     projectId: 'studenthelperolx',
@@ -62,6 +64,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCJbi2yCYEiyVJx4gTtSrXfAtplq0oH8UM',
+    databaseURL: 'https://studenthelperolx-default-rtdb.asia-southeast1.firebasedatabase.app',
     appId: '1:979319833074:ios:52c14615401709546aab6b',
     messagingSenderId: '979319833074',
     projectId: 'studenthelperolx',
@@ -72,6 +75,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCJbi2yCYEiyVJx4gTtSrXfAtplq0oH8UM',
+    databaseURL: 'https://studenthelperolx-default-rtdb.asia-southeast1.firebasedatabase.app',
     appId: '1:979319833074:ios:52c14615401709546aab6b',
     messagingSenderId: '979319833074',
     projectId: 'studenthelperolx',
