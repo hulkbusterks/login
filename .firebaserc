@@ -1,8 +1,5 @@
 {
   "projects": {
-    "default": "studenthelperolx",
-    "staging": "studenthelperolx"
-  },
-  "targets": {},
-  "etags": {}
+    "default": "olx-1-d68b6"
+  }
 }
