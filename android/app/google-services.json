@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "979319833074",
+    "firebase_url": "https://studenthelperolx-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "studenthelperolx",
+    "storage_bucket": "studenthelperolx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979319833074:android:5954303df95721826aab6b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979319833074-gsj361ne6hcvnjehkqap09okmvlep8nr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKj3tZyD2hWheahG4iiP4mAiOSBmzb0cM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979319833074-gsj361ne6hcvnjehkqap09okmvlep8nr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "979319833074-8gf76j4qf8ih8o7ofbkaptqj0qhm0ocu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterAuth"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

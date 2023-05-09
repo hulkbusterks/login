@@ -1,45 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/responsive.dart';
-import '../../components/background.dart';
 import 'components/sign_up_top_image.dart';
 import 'components/signup_form.dart';
-import 'components/socal_sign_up.dart';
+import 'components/signUpPagebody.dart';
+import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Background(
-      child: SingleChildScrollView(
-        child: Responsive(
-          mobile: const MobileSignupScreen(),
-          desktop: Row(
-            children: [
-              const Expanded(
-                child: SignUpScreenTopImage(),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SizedBox(
-                      width: 450,
-                      child: SignUpForm(),
-                    ),
-                    SizedBox(height: defaultPadding / 2),
-                    // SocalSignUp()
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+    
+    return Scaffold(
+      appBar:LoginSignUpAppBar(scaffoldKey:_scaffoldKey,isLogin: false, ) ,
+      body: Responsive(
+        mobile: const MobileSignupScreen(),
+        desktop: SignUpPageBody(),
       ),
     );
   }
 }
+
 
 class MobileSignupScreen extends StatelessWidget {
   const MobileSignupScreen({
@@ -53,11 +35,11 @@ class MobileSignupScreen extends StatelessWidget {
       children: <Widget>[
         const SignUpScreenTopImage(),
         Row(
-          children: const [
+          children: [
             Spacer(),
             Expanded(
               flex: 8,
-              child: SignUpForm(),
+              child: SignUpPageBody(),
             ),
             Spacer(),
           ],
