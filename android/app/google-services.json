@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "829605890857",
+    "firebase_url": "https://olx-1-d68b6-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "olx-1-d68b6",
+    "storage_bucket": "olx-1-d68b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829605890857:android:6dd6b2f0523f54ad3e0538",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "829605890857-r84cnevvk6n96opuvfm3lf8qnr9tcogk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHGT1Gj-yokc8O1sZoQ5kHH2J10jo00W0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "829605890857-r84cnevvk6n96opuvfm3lf8qnr9tcogk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

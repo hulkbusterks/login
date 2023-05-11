@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/home.dart';
+import 'package:flutter_auth/Screens/home/home.dart';
 
 import '../../../components/already_have_an_account_acheck.dart';
 import '../../../constants.dart';
 import '../../Login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:firebase_database/firebase_database.dart';
 class SignUpForm extends StatelessWidget {
   const SignUpForm({
     Key? key,
@@ -23,12 +23,12 @@ class SignUpForm extends StatelessWidget {
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             onChanged: (email) {
-              emailAddress = email!;
+              emailAddress = email;
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               hintText: "Your email",
               prefixIcon: Padding(
-                padding: const EdgeInsets.all(defaultPadding),
+                padding: EdgeInsets.all(defaultPadding),
                 child: Icon(Icons.person),
               ),
             ),
@@ -39,10 +39,10 @@ class SignUpForm extends StatelessWidget {
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: kPrimaryColor,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Your password",
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.all(defaultPadding),
+                  padding: EdgeInsets.all(defaultPadding),
                   child: Icon(Icons.lock),
                 ),
               ),
@@ -60,8 +60,14 @@ class SignUpForm extends StatelessWidget {
                   email: emailAddress,
                   password: password,
                 );
+                //integrating realtime Database of firebase
+                DatabaseReference userRef=FirebaseDatabase.instance.ref().child('users');
+                String uid= credential.user!.uid;
+                userRef.child(uid).set({
+
+                });
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return MyHome();
+                  return HomePage();
                 }));
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'weak-password') {

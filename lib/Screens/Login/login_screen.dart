@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/responsive.dart';
 
-import '../../components/background.dart';
 import 'components/login_form.dart';
 import 'components/login_screen_top_image.dart';
-
+import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  LoginScreen({Key? key}) : super(key: key);
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return Background(
-      child: SingleChildScrollView(
+    return Scaffold(
+      appBar: LoginSignUpAppBar(isLogin: true,scaffoldKey:_scaffoldKey ),
+      body: SingleChildScrollView(
         child: Responsive(
           mobile: const MobileLoginScreen(),
           desktop: Row(
@@ -22,11 +23,8 @@ class LoginScreen extends StatelessWidget {
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    SizedBox(
-                      width: 450,
-                      child: LoginForm(),
-                    ),
+                  children: [
+                    LoginForm()
                   ],
                 ),
               ),
@@ -50,13 +48,13 @@ class MobileLoginScreen extends StatelessWidget {
       children: <Widget>[
         const LoginScreenTopImage(),
         Row(
-          children: const [
-            Spacer(),
+          children: [
+            const Spacer(),
             Expanded(
               flex: 8,
               child: LoginForm(),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ],

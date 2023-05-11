@@ -21,20 +21,11 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -58,7 +49,39 @@ class DefaultFirebaseOptions {
     messagingSenderId: '829605890857',
     projectId: 'olx-1-d68b6',
     authDomain: 'olx-1-d68b6.firebaseapp.com',
+    databaseURL: 'https://olx-1-d68b6-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'olx-1-d68b6.appspot.com',
     measurementId: 'G-EYXDEW1YNT',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCHGT1Gj-yokc8O1sZoQ5kHH2J10jo00W0',
+    appId: '1:829605890857:android:6dd6b2f0523f54ad3e0538',
+    messagingSenderId: '829605890857',
+    projectId: 'olx-1-d68b6',
+    databaseURL: 'https://olx-1-d68b6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'olx-1-d68b6.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyCc4zToLuE9zs2XoBsoNSLWqDmP4VXt7P0',
+    appId: '1:829605890857:ios:33eb09482026a26d3e0538',
+    messagingSenderId: '829605890857',
+    projectId: 'olx-1-d68b6',
+    databaseURL: 'https://olx-1-d68b6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'olx-1-d68b6.appspot.com',
+    iosClientId: '829605890857-7dgbl9d3nbcav16bho6uh7e7kt031v8a.apps.googleusercontent.com',
+    iosBundleId: 'com.example.flutterAuth',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCc4zToLuE9zs2XoBsoNSLWqDmP4VXt7P0',
+    appId: '1:829605890857:ios:33eb09482026a26d3e0538',
+    messagingSenderId: '829605890857',
+    projectId: 'olx-1-d68b6',
+    databaseURL: 'https://olx-1-d68b6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    storageBucket: 'olx-1-d68b6.appspot.com',
+    iosClientId: '829605890857-7dgbl9d3nbcav16bho6uh7e7kt031v8a.apps.googleusercontent.com',
+    iosBundleId: 'com.example.flutterAuth',
   );
 }
