@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       endDrawer: SideBarMenu(),
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: const Color(0xffffffff),
       body: Column(children: [
         HomePageAppBar(
           scaffoldKey: _scaffoldKey,
