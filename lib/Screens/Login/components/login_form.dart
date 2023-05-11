@@ -26,7 +26,7 @@ class LoginForm extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
+              SizedBox(
                 height: 140,
                 child: Column(children: [
                   Text(
