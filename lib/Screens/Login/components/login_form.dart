@@ -92,7 +92,6 @@ class LoginForm extends StatelessWidget {
                           .signInWithEmailAndPassword(
                               email: emailController.text.trim(), password: passwordController.text.trim());
                               userIdController.setUserId(credential.user!.uid);
-                              print(credential.user!.uid);
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                         return HomePage();

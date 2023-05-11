@@ -29,8 +29,7 @@ class SideBarMenu extends StatelessWidget {
           onTap: () {
             Navigator.pop(context);
             Navigator.push(context, MaterialPageRoute(builder: ((context) {
-              // return ProfileScreen(userid: userIdController.userid.value,);
-              return ProfileScreen(userid: "NyCROzsBnsSsyE6LvbmjpONECjt2",);
+              return ProfileScreen(userid: userIdController.userid.value,);
             })));
           },
         ),

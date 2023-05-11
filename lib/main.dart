@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: ProfileScreen(userid: "NyCROzsBnsSsyE6LvbmjpONECjt2"),
+      home: WelcomeScreen(),
     );
   }
 }
