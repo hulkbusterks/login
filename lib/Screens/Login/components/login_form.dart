@@ -36,7 +36,7 @@ class LoginForm extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              GoogleConnect(isLogin: true)
+              GoogleConnect(isLogin: true,onTap: (){})
             ]),
           ),
           // Or element
@@ -81,12 +81,13 @@ class LoginForm extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       textInputAction: TextInputAction.next),
+                      passwordFormat(),
                   CustomTextField(
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'password is required.';
                         } else if (!Validations.validatePassword(value)) {
-                          return 'Please enter a valid password address.';
+                          return 'Please enter a valid password. Password must include atleast 1 special character, capital letter,number';
                         }
                         return null;
                       },

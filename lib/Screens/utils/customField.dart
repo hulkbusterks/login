@@ -27,17 +27,17 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       width: width,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           FieldName,
-          style: GoogleFonts.getFont("Ramabhadra",
+          style: GoogleFonts.getFont("Nunito",
               fontSize: 15, fontWeight: FontWeight.bold),
         ),
         TextFormField(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          controller: controller,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            controller: controller,
             obscureText: isObscure,
             textInputAction: textInputAction,
             keyboardType: keyboardType,
@@ -46,19 +46,23 @@ class CustomTextField extends StatelessWidget {
             cursorWidth: 1,
             validator: validator,
             decoration: InputDecoration(
-              errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: const BorderSide(
+              helperText: " ",
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
                     color: Color(0xff0033ff),
                     width: 2.0,
-                  ),),
+                  ),
+                ),
                 contentPadding: const EdgeInsets.only(bottom: 7, left: 10),
                 filled: true,
-                focusedErrorBorder:OutlineInputBorder(
+                focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     color: Color.fromARGB(255, 240, 8, 8),
                     width: 2.0,
                   ),
-                ) ,
+                ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(
@@ -76,8 +80,7 @@ class CustomTextField extends StatelessWidget {
                 fillColor: textFilledColor,
                 hintText: hintText,
                 hintStyle: TextStyle(
-                    fontSize: 14,
-                    color: Color.fromARGB(255, 195, 195, 195))))
+                    fontSize: 14, color: Color.fromARGB(255, 195, 195, 195))))
       ]),
     );
   }

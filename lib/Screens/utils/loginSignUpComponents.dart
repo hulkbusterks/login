@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class GoogleConnect extends StatelessWidget {
   bool isLogin;
-  Function()? onTap;
-  GoogleConnect({Key? key, required this.isLogin}) : super(key: key);
+  Function() onTap;
+  GoogleConnect({Key? key, required this.isLogin, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class GoogleConnect extends StatelessWidget {
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason> customSnackBar(
     BuildContext context, String inputText) {
   return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Align(alignment: Alignment.topCenter,child: Text(inputText)),
+    content: Align(alignment: Alignment.topCenter, child: Text(inputText)),
     backgroundColor: Colors.teal,
     behavior: SnackBarBehavior.floating,
     width: 300,
@@ -96,6 +98,15 @@ class Validations {
         RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
     if (value.isEmpty) {
       return false;
-    } return regex.hasMatch(value);
+    }
+    return regex.hasMatch(value);
   }
+}
+
+Widget passwordFormat() {
+  return Text(
+    "* Password must include atleast 1 special character, capital letter, number",
+    style: GoogleFonts.getFont("Nunito",
+        fontSize: 13, fontWeight: FontWeight.normal),
+  );
 }
