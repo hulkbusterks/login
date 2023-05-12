@@ -10,7 +10,8 @@ Color textFilledColor = const Color(0xfff1f1f1);
 class FieldStyle extends StatelessWidget {
   String fieldName;
   TextEditingController controller;
-  FieldStyle({Key? key, required this.fieldName,required this.controller}) : super(key: key);
+  FieldStyle({Key? key, required this.fieldName, required this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class FieldStyle extends StatelessWidget {
         SizedBox(
           width: 410,
           child: TextField(
-            controller: controller,
+              controller: controller,
               obscureText: false,
               keyboardType: TextInputType.name,
               cursorColor: Colors.black,
@@ -56,13 +57,18 @@ class FieldStyle extends StatelessWidget {
 
 class NextPageOfSignUpPage extends StatefulWidget {
   // fetching user credentials from sign up body
-   String firstName;
+  String firstName;
   String lastName;
   String mobileNumber;
   String emailAddress;
   String password;
   NextPageOfSignUpPage(
-      {Key? key, required this.firstName,required this.lastName,required this.mobileNumber,required this.emailAddress, required this.password})
+      {Key? key,
+      required this.firstName,
+      required this.lastName,
+      required this.mobileNumber,
+      required this.emailAddress,
+      required this.password})
       : super(key: key);
   @override
   State<NextPageOfSignUpPage> createState() => _NextPageOfSignUpPageState();
@@ -71,15 +77,21 @@ class NextPageOfSignUpPage extends StatefulWidget {
 class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
   String instituteType = '';
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  var instituteNameController= TextEditingController();
+  var instituteNameController = TextEditingController();
   var instituteLocationController = TextEditingController();
   Widget _buildSchoolDetails() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        FieldStyle(fieldName: "School Name",controller: instituteNameController,),
+        FieldStyle(
+          fieldName: "School Name",
+          controller: instituteNameController,
+        ),
         const SizedBox(height: 20),
-        FieldStyle(fieldName: "School Address",controller: instituteLocationController,),
+        FieldStyle(
+          fieldName: "School Address",
+          controller: instituteLocationController,
+        ),
       ],
     );
   }
@@ -88,9 +100,12 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        FieldStyle(fieldName: "College Name",controller: instituteNameController),
+        FieldStyle(
+            fieldName: "College Name", controller: instituteNameController),
         const SizedBox(height: 20),
-        FieldStyle(fieldName: "College Address",controller: instituteLocationController),
+        FieldStyle(
+            fieldName: "College Address",
+            controller: instituteLocationController),
       ],
     );
   }
@@ -120,8 +135,8 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                       children: [
                         const Text(
                           "Are you from School or College?",
-                          style:
-                              TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
                         ),
                         const SizedBox(
                           height: 30,
@@ -190,7 +205,8 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         side: const BorderSide(
-                                            color: Color(0xff002aff), width: 2)),
+                                            color: Color(0xff002aff),
+                                            width: 2)),
                                     padding: const EdgeInsets.all(8),
                                     backgroundColor: Colors.white,
                                     shadowColor: Colors.white),
@@ -207,20 +223,22 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                               height: 40,
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  var instituteName = instituteNameController.text.trim();
-                                  var instituteLocation = instituteLocationController.text.trim();
-                                  if (instituteType.isEmpty ||instituteName.isEmpty ||
-                                      instituteLocation.isEmpty
-                                   ) {
+                                  var instituteName =
+                                      instituteNameController.text.trim();
+                                  var instituteLocation =
+                                      instituteLocationController.text.trim();
+                                  if (instituteType.isEmpty ||
+                                      instituteName.isEmpty ||
+                                      instituteLocation.isEmpty) {
                                     // show error toast
                                     Fluttertoast.showToast(
                                         msg: 'Please fill all fields');
                                     return;
                                   }
                                   try {
-                                    UserCredential credential = await FirebaseAuth
-                                        .instance
-                                        .createUserWithEmailAndPassword(
+                                    UserCredential credential =
+                                        await FirebaseAuth.instance
+                                            .createUserWithEmailAndPassword(
                                       email: widget.emailAddress,
                                       password: widget.password,
                                     );
@@ -230,14 +248,14 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                         .child('users');
                                     String uid = credential.user!.uid;
                                     await userRef.child(uid).set({
-                                      'firstName':widget.firstName,
-                                      'lastName':widget.lastName,
-                                      'email':widget.emailAddress,
-                                      'mobileNumber':widget.mobileNumber,
-                                      'password':widget.password,
-                                      'instituteType':instituteType,
-                                      'instituteName':instituteName,
-                                      'instituteLocation':instituteLocation,
+                                      'firstName': widget.firstName,
+                                      'lastName': widget.lastName,
+                                      'email': widget.emailAddress,
+                                      'mobileNumber': widget.mobileNumber,
+                                      'password': widget.password,
+                                      'instituteType': instituteType,
+                                      'instituteName': instituteName,
+                                      'instituteLocation': instituteLocation,
                                     });
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
@@ -245,10 +263,14 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                     }));
                                   } on FirebaseAuthException catch (e) {
                                     if (e.code == 'weak-password') {
-                                      print('The password provided is too weak.');
-                                    } else if (e.code == 'email-already-in-use') {
-                                      print(
-                                          'The account already exists for that email.');
+                                      const SnackBar(
+                                          content: Text(
+                                              'The password provided is too weak.'));
+                                    } else if (e.code ==
+                                        'email-already-in-use') {
+                                      const SnackBar(
+                                          content: Text(
+                                              'The account already exists for that email.'));
                                     }
                                   } catch (e) {
                                     print(e);
@@ -258,7 +280,8 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                         side: const BorderSide(
-                                            color: Color(0xff002aff), width: 2)),
+                                            color: Color(0xff002aff),
+                                            width: 2)),
                                     padding: const EdgeInsets.all(8),
                                     backgroundColor: Colors.white,
                                     shadowColor: Colors.white),

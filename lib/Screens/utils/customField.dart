@@ -10,9 +10,11 @@ class CustomTextField extends StatelessWidget {
   TextInputAction textInputAction;
   Function(String)? onChanged;
   String? hintText;
+  String? Function(String?)? validator;
   TextEditingController controller;
   CustomTextField(
       {Key? key,
+      required this.validator,
       required this.width,
       required this.FieldName,
       required this.isObscure,
@@ -27,46 +29,55 @@ class CustomTextField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       width: width,
-      height: 108,
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           FieldName,
           style: GoogleFonts.getFont("Ramabhadra",
               fontSize: 15, fontWeight: FontWeight.bold),
         ),
-        SizedBox(
-          height: 40,
-          child: TextFormField(
-            controller: controller,
-              obscureText: isObscure,
-              textInputAction: textInputAction,
-              keyboardType: keyboardType,
-              cursorColor: Colors.black,
-              onChanged: onChanged,
-              cursorWidth: 1,
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.only(bottom: 7, left: 10),
-                  filled: true,
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: textFilledColor,
-                      width: 2.0,
-                    ),
+        TextFormField(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          controller: controller,
+            obscureText: isObscure,
+            textInputAction: textInputAction,
+            keyboardType: keyboardType,
+            cursorColor: Colors.black,
+            onChanged: onChanged,
+            cursorWidth: 1,
+            validator: validator,
+            decoration: InputDecoration(
+              errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),borderSide: const BorderSide(
+                    color: Color(0xff0033ff),
+                    width: 2.0,
+                  ),),
+                contentPadding: const EdgeInsets.only(bottom: 7, left: 10),
+                filled: true,
+                focusedErrorBorder:OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(255, 240, 8, 8),
+                    width: 2.0,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(
-                      color: Color(0xff0033ff),
-                      width: 2.0,
-                    ),
+                ) ,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(
+                    color: textFilledColor,
+                    width: 2.0,
                   ),
-                  fillColor: textFilledColor,
-                  hintText: hintText,
-                  hintStyle: TextStyle(
-                      fontSize: 14,
-                      color: Color.fromARGB(255, 195, 195, 195)))),
-        )
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(
+                    color: Color(0xff0033ff),
+                    width: 2.0,
+                  ),
+                ),
+                fillColor: textFilledColor,
+                hintText: hintText,
+                hintStyle: TextStyle(
+                    fontSize: 14,
+                    color: Color.fromARGB(255, 195, 195, 195))))
       ]),
     );
   }

@@ -5,6 +5,7 @@ import 'package:flutter_auth/Screens/home.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_auth/temp.dart';
 import 'firebase_options.dart';
 import 'Screens/profile/profile.dart';
 
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: WelcomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
