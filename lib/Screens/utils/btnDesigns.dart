@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/profile/profileConstants.dart';
+import 'package:flutter_auth/Screens/profile/profileutils/profileConstants.dart';
 ButtonStyle CustomElevatedBtnStyle() {
   return ButtonStyle(
     shadowColor: MaterialStateProperty.all(Colors.transparent),

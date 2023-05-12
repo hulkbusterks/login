@@ -4,15 +4,15 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/home/homePageAppBar.dart';
 import 'package:flutter_auth/Screens/home/sideBarMenu.dart';
-import 'package:flutter_auth/Screens/profile/personalInfo.dart';
-import 'package:flutter_auth/Screens/profile/visibilityController.dart';
-import 'package:flutter_auth/Screens/profile/yourOrders.dart';
-import 'package:flutter_auth/Screens/profile/yourProducts.dart';
+import 'package:flutter_auth/Screens/profile/tabs/personalInfo.dart';
+import 'package:flutter_auth/controllers/visibilityController.dart';
+import 'package:flutter_auth/Screens/profile/tabs/yourOrders.dart';
+import 'package:flutter_auth/Screens/profile/tabs/yourProducts.dart';
 import 'package:flutter_auth/Screens/utils/btnDesigns.dart';
 import 'package:flutter_auth/Screens/utils/textDesigns.dart';
 import 'package:flutter_auth/models/userModel.dart';
 import 'package:get/get.dart';
-import 'profileComponents.dart';
+import 'profileutils/profileComponents.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatefulWidget {

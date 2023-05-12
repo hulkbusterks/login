@@ -81,7 +81,6 @@ class LoginForm extends StatelessWidget {
                       keyboardType: TextInputType.emailAddress,
                       controller: emailController,
                       textInputAction: TextInputAction.next),
-                      passwordFormat(),
                   CustomTextField(
                       validator: (value) {
                         if (value!.isEmpty) {

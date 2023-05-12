@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
-import 'package:flutter_auth/Screens/home.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_auth/temp.dart';
 import 'firebase_options.dart';
+import 'Screens/profile/tabs/profileEdit.dart';
 import 'Screens/profile/profile.dart';
 
 void main() async {
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: SignUpScreen(),
+      home: ProfileEdit(),
     );
   }
 }
