@@ -63,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            HomePageAppBar(scaffoldKey: _scaffoldKey),
+            HomePageAppBar(),
             Padding(
               padding: const EdgeInsets.fromLTRB(230, 20, 230, 0),
               child: Column(

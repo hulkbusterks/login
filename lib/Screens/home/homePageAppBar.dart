@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'textFieldContainer.dart';
 
-class HomePageAppBar extends StatelessWidget with PreferredSizeWidget {
-  HomePageAppBar({Key? key, required this.scaffoldKey}) : super(key: key);
-  final scaffoldKey;
+class HomePageAppBar extends StatelessWidget{
+  HomePageAppBar({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,9 +65,6 @@ class HomePageAppBar extends StatelessWidget with PreferredSizeWidget {
           ],
         ));
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class SearchBar extends StatelessWidget {

@@ -10,10 +10,8 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
     
     return Scaffold(
-      appBar:LoginSignUpAppBar(scaffoldKey:_scaffoldKey,isLogin: false, ) ,
       body: Responsive(
         mobile: const MobileSignupScreen(),
         desktop: SignUpPageBody(),

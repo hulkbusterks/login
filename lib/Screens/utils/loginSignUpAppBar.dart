@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
-  LoginSignUpAppBar({Key? key, required this.scaffoldKey,required this.isLogin}) : super(key: key);
+class LoginSignUpAppBar extends StatelessWidget{
+  LoginSignUpAppBar({Key? key,required this.isLogin}) : super(key: key);
   bool isLogin;
-  final scaffoldKey;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -45,7 +44,4 @@ class LoginSignUpAppBar extends StatelessWidget with PreferredSizeWidget {
           ],
         ));
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
