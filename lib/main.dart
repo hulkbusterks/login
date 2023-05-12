@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: ProfileEdit(),
+      home: WelcomeScreen(),
     );
   }
 }
