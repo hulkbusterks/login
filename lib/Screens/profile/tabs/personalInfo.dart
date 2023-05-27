@@ -5,6 +5,7 @@ import 'package:flutter_auth/Screens/utils/textDesigns.dart';
 import 'package:flutter_auth/controllers/controllers.dart';
 import 'package:get/get.dart';
 import '../profileutils/profileConstants.dart';
+
 class PersonalInfo extends StatelessWidget {
   PersonalInfo({Key? key}) : super(key: key);
   Controller controller = Get.put(Controller());
@@ -34,19 +35,24 @@ class PersonalInfo extends StatelessWidget {
         ),
         Row(
           children: [
-            Obx(() => CustomCard(
-              title: "Name",
-              titleValue: "${controller.userModel.value.firstName} ${controller.userModel.value.lastName}",
-              icon: Icons.person_2_outlined,
-            ),),
+            Obx(
+              () => CustomCard(
+                title: "Name",
+                titleValue:
+                    "${controller.userModel.value.firstName} ${controller.userModel.value.lastName}",
+                icon: Icons.person_2_outlined,
+              ),
+            ),
             const SizedBox(
               width: 10,
             ),
-            Obx(() => CustomCard(
-              title: "Contactable at",
-              titleValue: controller.userModel.value.email,
-              icon: Icons.connect_without_contact_outlined,
-            ),),
+            Obx(
+              () => CustomCard(
+                title: "Contactable at",
+                titleValue: controller.userModel.value.email,
+                icon: Icons.connect_without_contact_outlined,
+              ),
+            ),
           ],
         ),
         const SizedBox(
@@ -54,17 +60,22 @@ class PersonalInfo extends StatelessWidget {
         ),
         Row(
           children: [
-            Obx(() => CustomCard(
-                title: "Institute Type",
-                titleValue: controller.userModel.value.instituteType,
-                icon: Icons.school_outlined),),
+            Obx(() {
+              controller.setInstituteType(controller.userModel.value.instituteType);
+              return CustomCard(
+                  title: "Institute Type",
+                  titleValue: controller.userModel.value.instituteType,
+                  icon: Icons.school_outlined);
+            }),
             const SizedBox(
               width: 10,
             ),
-            Obx(() => CustomCard(
-                title: "Institute Name",
-                titleValue: controller.userModel.value.instituteName,
-                icon: Icons.location_city_outlined),),
+            Obx(
+              () => CustomCard(
+                  title: "Institute Name",
+                  titleValue: controller.userModel.value.instituteName,
+                  icon: Icons.location_city_outlined),
+            ),
           ],
         ),
         const SizedBox(
@@ -72,10 +83,12 @@ class PersonalInfo extends StatelessWidget {
         ),
         Row(
           children: [
-            Obx(() => CustomCard(
-                title: "Institute Location",
-                titleValue: controller.userModel.value.instituteLocation,
-                icon: Icons.place_outlined),),
+            Obx(
+              () => CustomCard(
+                  title: "Institute Location",
+                  titleValue: controller.userModel.value.instituteLocation,
+                  icon: Icons.place_outlined),
+            ),
             CustomCard(
                 title: "Languages",
                 titleValue: "English, Hindi",
@@ -104,10 +117,11 @@ class CustomCard extends StatelessWidget {
       flex: 1,
       child: SizedBox(
           height: 120,
+
           /// added inkwell just for future animation purpose
           child: InkWell(
-            onTap: (){},
-        borderRadius: BorderRadius.circular(20),
+            onTap: () {},
+            borderRadius: BorderRadius.circular(20),
             child: Card(
               elevation: 0,
               shape: RoundedRectangleBorder(

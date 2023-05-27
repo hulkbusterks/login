@@ -6,9 +6,9 @@ import 'package:flutter_auth/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_auth/temp.dart';
 import 'firebase_options.dart';
-import 'Screens/profile/tabs/profileEdit.dart';
+import 'Screens/profile/tabs/profileEdit/profileEdit.dart';
 import 'Screens/profile/profile.dart';
-
+import 'Screens/Signup/components/nextpage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -50,7 +50,8 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-      home: WelcomeScreen(),
+          // home: NextPageOfSignUpPage(emailAddress: "",firstName: "",lastName: "",mobileNumber: "",password: ""),
+      home: ProfileScreen(userid: "NyCROzsBnsSsyE6LvbmjpONECjt2"),
     );
   }
 }
