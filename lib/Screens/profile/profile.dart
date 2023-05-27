@@ -1,4 +1,6 @@
+/// Profile page which includes information of user
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
+import 'package:flutter_auth/Screens/profile/tabs/profileEdit/profileEdit.dart';
 import 'package:flutter_auth/controllers/controllers.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _userRef.onValue.listen((event) {
       Object? data = event.snapshot.value;
       Map<String, dynamic> dataMap = data as Map<String, dynamic>;
+      // storing profile information from firebase into controller
       controller.setUserModel(UserModel(
           firstName: dataMap['firstName'],
           lastName: dataMap['lastName'],
@@ -90,7 +93,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 height: 35,
                                 width: 100,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return EditProfileDialog(
+                                            email: "",
+                                            instituteLocation: "",
+                                            instituteName: "",
+                                            language: "",
+                                            mobileNumber: "",
+                                            firstName: "",
+                                            lastName: "",
+                                          );
+                                        }).then((value) => setState(() {
+                                          if (value == null) {
+                                            /// Takes care of the situation when no theme is selected.
+                                            return;
+                                          } else {
+                                            print("value ${value}");
+                                          }
+                                        }));
+                                  },
                                   style: CustomElevatedBtnStyle(),
                                   child: Row(
                                     mainAxisAlignment:

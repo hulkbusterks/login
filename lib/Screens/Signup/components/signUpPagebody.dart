@@ -9,6 +9,7 @@ import 'package:flutter_auth/Screens/utils/customField.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpComponents.dart';
+import 'package:flutter_auth/Screens/utils/screensUtils.dart';
 
 extension EmailValidator on String {
   bool isValidEmail() {
@@ -141,18 +142,7 @@ class SignUpPageBody extends StatelessWidget {
                                     controller: mobileNumberController,
                                     width: 410,
                                     FieldName: "Mobile Number",
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return 'Mobile Number is required.';
-                                      } else if (!RegExp(r'^[0-9]+$')
-                                          .hasMatch(value)) {
-                                        return 'Mobile number must contain only digits.';
-                                      } else if (!Validations.validateMobile(
-                                          value)) {
-                                        return "Enter a valid mobile number";
-                                      }
-                                      return null;
-                                    },
+                                    validator: fieldValidations['mobileNumber'],
                                     isObscure: false,
                                     keyboardType: TextInputType.number,
                                     textInputAction: TextInputAction.next),
@@ -161,15 +151,7 @@ class SignUpPageBody extends StatelessWidget {
                                   children: <Widget>[
                                     CustomTextField(
                                       controller: emailController,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'Email is required.';
-                                        } else if (!Validations.isEmail(
-                                            value)) {
-                                          return "Enter a valid email";
-                                        }
-                                        return null;
-                                      },
+                                      validator: fieldValidations['email'],
                                       width: 410,
                                       FieldName: "Email",
                                       isObscure: false,
@@ -180,15 +162,7 @@ class SignUpPageBody extends StatelessWidget {
                                     CustomTextField(
                                       controller: passwordController,
                                       width: 410,
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'password is required.';
-                                        } else if (!Validations
-                                            .validatePassword(value)) {
-                                          return 'Please enter a valid password';
-                                        }
-                                        return null;
-                                      },
+                                      validator: fieldValidations['password'],
                                       FieldName: "Password",
                                       isObscure: true,
                                       keyboardType:

@@ -6,4 +6,9 @@ class Controller extends GetxController{
   setUserModel(UserModel model){
     userModel.value=model;
   }
+
+  RxString instituteType="".obs;
+  setInstituteType(String iType){
+    instituteType.value=iType;
+  }
 }
