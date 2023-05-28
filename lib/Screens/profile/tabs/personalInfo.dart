@@ -12,6 +12,8 @@ class PersonalInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller
+                  .setInstituteType(controller.userModel.value.instituteType);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -49,7 +51,8 @@ class PersonalInfo extends StatelessWidget {
             Obx(
               () => CustomCard(
                 title: "Contactable at",
-                titleValue: controller.userModel.value.email,
+                titleValue:
+                    "${controller.userModel.value.email}\n${controller.userModel.value.mobileNumber}",
                 icon: Icons.connect_without_contact_outlined,
               ),
             ),
@@ -61,10 +64,10 @@ class PersonalInfo extends StatelessWidget {
         Row(
           children: [
             Obx(() {
-              controller.setInstituteType(controller.userModel.value.instituteType);
+              
               return CustomCard(
                   title: "Institute Type",
-                  titleValue: controller.userModel.value.instituteType,
+                  titleValue: "${controller.userModel.value.instituteType[0].toUpperCase() + controller.userModel.value.instituteType.substring(1)}",
                   icon: Icons.school_outlined);
             }),
             const SizedBox(

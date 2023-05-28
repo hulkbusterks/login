@@ -10,6 +10,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("on welcome screen");
     return Background(
       child: SingleChildScrollView(
         child: SafeArea(

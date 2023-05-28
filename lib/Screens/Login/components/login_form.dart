@@ -17,6 +17,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("on login form");
     BuildContext SnackContext = context;
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
@@ -68,6 +69,7 @@ class LoginForm extends StatelessWidget {
                 children: <Widget>[
                   CustomTextField(
                       validator: (value) {
+                        print("email field");
                         if (value!.isEmpty) {
                           return 'Email is required.';
                         } else if (!Validations.isEmail(value)) {
