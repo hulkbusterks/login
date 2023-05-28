@@ -1,6 +1,6 @@
 /// Profile page which includes information of user
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
-import 'package:flutter_auth/Screens/profile/tabs/profileEdit/profileEdit.dart';
+import 'package:flutter_auth/Screens/profile/profileEdit/profileEdit.dart';
 import 'package:flutter_auth/controllers/controllers.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +16,10 @@ import 'package:flutter_auth/models/userModel.dart';
 import 'package:get/get.dart';
 import 'profileutils/profileComponents.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_auth/controllers/userIdController.dart';
 
 class ProfileScreen extends StatefulWidget {
-  String userid;
-  ProfileScreen({Key? key, required this.userid}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -31,6 +31,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   /// Variables
   VisibilityController visibilityController = Get.put(VisibilityController());
   Controller controller = Get.put(Controller());
+  UserIdController userIdController=Get.find<UserIdController>();
+
   List<Widget> pages = [
     PersonalInfo(),
     const YourOrders(),
@@ -43,18 +45,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     /// fetching user data corresponding to the user currently logged in
     _userRef =
-        FirebaseDatabase.instance.ref().child("users").child(widget.userid);
+        FirebaseDatabase.instance.ref().child("users").child(userIdController.userid.value);
     _userRef.onValue.listen((event) {
       Object? data = event.snapshot.value;
       Map<String, dynamic> dataMap = data as Map<String, dynamic>;
       // storing profile information from firebase into controller
       controller.setUserModel(UserModel(
-          firstName: dataMap['firstName'],
-          lastName: dataMap['lastName'],
-          email: dataMap['email'],
-          instituteType: dataMap['instituteType'],
-          instituteName: dataMap['instituteName'],
-          instituteLocation: dataMap['instituteLocation']));
+          firstName: "${dataMap["firstName"][0].toUpperCase() + dataMap["firstName"].substring(1)}",
+          lastName: "${dataMap["lastName"][0].toUpperCase() + dataMap["lastName"].substring(1)}",
+          mobileNumber: dataMap["mobileNumber"],
+          email: dataMap["email"],
+          instituteType: dataMap["instituteType"],
+          instituteName: "${dataMap["instituteName"][0].toUpperCase() + dataMap["instituteName"].substring(1)}",
+          instituteLocation: "${dataMap["instituteLocation"][0].toUpperCase() + dataMap["instituteLocation"].substring(1)}"));
     });
   }
 
@@ -98,13 +101,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return EditProfileDialog(
-                                            email: "",
-                                            instituteLocation: "",
-                                            instituteName: "",
-                                            language: "",
-                                            mobileNumber: "",
-                                            firstName: "",
-                                            lastName: "",
+                                            instituteLocation:controller.userModel.value.instituteLocation,
+                                            instituteName: controller
+                                                .userModel.value.instituteName,
+                                            language: "English, Hindi",
+                                            mobileNumber: controller
+                                                .userModel.value.mobileNumber,
+                                            firstName: controller
+                                                .userModel.value.firstName,
+                                            lastName: controller
+                                                .userModel.value.lastName,
                                           );
                                         }).then((value) => setState(() {
                                           if (value == null) {

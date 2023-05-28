@@ -233,7 +233,6 @@ class SignUpPageBody extends StatelessWidget {
                                   // show error toast
                                   Fluttertoast.showToast(
                                       msg: 'Passwords do not match');
-
                                   return;
                                 }
 

@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/controllers/controllers.dart';
+import 'package:get/get.dart';
 import '/Screens/home/home.dart';
 import 'package:flutter_auth/Screens/utils/loginSignUpAppBar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_auth/controllers/userIdController.dart';
 
 Color textFilledColor = const Color(0xfff1f1f1);
 
@@ -75,10 +78,11 @@ class NextPageOfSignUpPage extends StatefulWidget {
 }
 
 class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
-  String instituteType = '';
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   var instituteNameController = TextEditingController();
   var instituteLocationController = TextEditingController();
+  Controller controller = Get.put(Controller());
+  UserIdController userIdController=Get.put(UserIdController());
   Widget _buildSchoolDetails() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,15 +148,17 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                         Row(children: [
                           Row(
                             children: [
-                              Radio(
+                              Obx(() {
+                                return Radio(
                                 value: 'school',
-                                groupValue: instituteType,
+                                groupValue: controller.instituteType.value,
                                 onChanged: (value) {
-                                  setState(() {
-                                    instituteType = value as String;
-                                  });
+                                  controller.setInstituteType(value as String);
+                                  print(controller.instituteType.value);
+
                                 },
-                              ),
+                              );
+                              },),
                               const Text(
                                 'School',
                                 style: TextStyle(
@@ -165,15 +171,16 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                           ),
                           Row(
                             children: [
-                              Radio(
+                              Obx(() {
+                                return Radio(
                                 value: 'college',
-                                groupValue: instituteType,
+                                groupValue: controller.instituteType.value,
                                 onChanged: (value) {
-                                  setState(() {
-                                    instituteType = value as String;
-                                  });
+                                  controller.setInstituteType(value as String);
+                                  print(controller.instituteType.value);
                                 },
-                              ),
+                              );
+                              }),
                               const Text(
                                 'College',
                                 style: TextStyle(
@@ -183,11 +190,13 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                           ),
                         ]),
                         const SizedBox(height: 20),
-                        instituteType == 'school'
+                        Obx(() {
+                          return controller.instituteType.value == 'school'
                             ? _buildSchoolDetails()
-                            : instituteType == 'college'
+                            : controller.instituteType.value == 'college'
                                 ? _buildCollegeDetails()
-                                : const SizedBox(),
+                                : const SizedBox();
+                        },),
                         const SizedBox(
                           height: 30,
                         ),
@@ -227,7 +236,7 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                       instituteNameController.text.trim();
                                   var instituteLocation =
                                       instituteLocationController.text.trim();
-                                  if (instituteType.isEmpty ||
+                                  if (controller.instituteType.value.isEmpty ||
                                       instituteName.isEmpty ||
                                       instituteLocation.isEmpty) {
                                     // show error toast
@@ -247,13 +256,15 @@ class _NextPageOfSignUpPageState extends State<NextPageOfSignUpPage> {
                                         .ref()
                                         .child('users');
                                     String uid = credential.user!.uid;
+                                    userIdController.setUserId(uid);
                                     await userRef.child(uid).set({
                                       'firstName': widget.firstName,
                                       'lastName': widget.lastName,
                                       'email': widget.emailAddress,
                                       'mobileNumber': widget.mobileNumber,
                                       'password': widget.password,
-                                      'instituteType': instituteType,
+                                      'instituteType':
+                                          controller.instituteType.value,
                                       'instituteName': instituteName,
                                       'instituteLocation': instituteLocation,
                                     });
